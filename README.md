@@ -9,7 +9,7 @@ StudyAI is a student-focused AI SaaS starter: a responsive React + Vite + Tailwi
 - Dashboard with study streak, focus progress, continue-learning cards, and free-user ad placeholder
 - AI Chat with usage indicator and demo fallback
 - AI Notes generator with structured study-sheet output
-- PDF → Notes upload flow (10MB validation + extraction integration point)
+- PDF → Notes upload flow with 10MB validation and lightweight text extraction for common text-based PDFs (scanned PDFs need OCR)
 - Image Studio with a demo visual and OpenAI image integration point
 - Premium ₹99/month page with checkout placeholder — no real payment is performed
 - Settings, theme preference UI, usage limits, loading states, empty states, and error fallbacks
@@ -54,7 +54,7 @@ To enable live text and image calls, set `OPENAI_API_KEY` in `server/.env`, then
 
 The payment endpoint is intentionally a placeholder at `/api/payment/create-checkout-session`. Add a provider such as Razorpay or Stripe on the server, validate webhooks, and persist subscription status before enabling real checkout. The current Premium button never charges a card.
 
-PDF upload validation is implemented. The next integration step is to add a trusted PDF text extractor in `server/index.js`, then send the extracted text to the existing notes prompt. The ad placeholder is a UI slot ready to be replaced with your chosen ad-network component after approval.
+PDF upload validation and a lightweight server-side text extractor are implemented. Text-based PDFs are sent to the notes prompt when OpenAI is configured; scanned/image-only PDFs need an OCR provider. The ad placeholder is a UI slot ready to be replaced with your chosen ad-network component after approval.
 
 ## Useful commands
 
